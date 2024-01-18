@@ -1,0 +1,1 @@
+customer.firstName=john&customer.lastName=smith&customer.address.street=100+Street&customer.address.city=melbourne&customer.address.state=victoria&customer.address.zipCode=3000&customer.phoneNumber=0123456789&customer.ssn=12345&customer.username=xT1JlrbOq5&customer.password=password&repeatedPassword=password
