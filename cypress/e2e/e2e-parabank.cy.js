@@ -71,6 +71,7 @@ describe('End to End', () => {
 
   it("should create a new user and login, create account, displaying balance, transfering funds and paying bill should be successful", () => {
 
+    //Create user and login
     RegisterPage.navigate();
     RegisterPage.inputFirstName(user.firstName);
     RegisterPage.inputLastName(user.lastName);
@@ -104,6 +105,7 @@ describe('End to End', () => {
       .invoke("text")
       .then(accountId => cy.wrap(accountId).as("firstAccountId"));
 
+    //Create new savings account
     OpenNewAccountPage.navigate();
     OpenNewAccountPage.selectAccountType("SAVINGS");
     OpenNewAccountPage.clickOpenNewAccount();
@@ -115,6 +117,7 @@ describe('End to End', () => {
       .invoke("text")
       .then(accountId => cy.wrap(accountId).as("secondAccountId"));
 
+    //validate balance details as expected
     AccountsOverviewPage.navigate();
 
     cy.get("@firstAccountId")
@@ -134,6 +137,7 @@ describe('End to End', () => {
           .should("contain.text", "$100.00");
       });
 
+    //Transfer Funds
     const transferAmount = "20";
 
     TransferFundsPage.navigate();
@@ -159,6 +163,7 @@ describe('End to End', () => {
       .parent()
       .should("contain.text", "has been transferred");
 
+    //Pay Bills
     BillPayPage.navigate();
     BillPayPage.inputPayeeName(biller.payeeName);
     BillPayPage.inputAddress(biller.address);
